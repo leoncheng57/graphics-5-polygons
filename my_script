@@ -1,13 +1,13 @@
 #test box mesh
-box
-0 0 0 200 100 400
+polygon
+0 0 0 100 0 0 0 100 0
 ident
-xrotate
-20
-yrotate
-20
-translate
-150 200 0
+# xrotate
+# 20
+# yrotate
+# 20
+# translate
+# 150 200 0
 apply
 display
 
