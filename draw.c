@@ -48,27 +48,39 @@ triangles
 jdyrlandweaver
 ====================*/
 void draw_polygons( struct matrix *polygons, screen s, color c ) {
+  /* int i=0; */
+  /* double x0, y0, x1, y1, x2, y2;  */
+  /* //for (i=0;i<polygons->lastcol; i+=3){ */
+  /*   x0 = polygons->m[0][i+0]; */  /*   y0 = polygons->m[1][i+0]; */
+  /*   x1 = polygons->m[0][i+1]; */
+  /*   y1 = polygons->m[1][i+1]; */
+  /*   draw_line((int)x0, (int)y0, (int)x1, (int)y1, s, c); */
+  /*   x1 = polygons->m[0][i+1]; */
+  /*   y1 = polygons->m[1][i+1]; */
+  /*   x2 = polygons->m[0][i+2]; */
+  /*   y2 = polygons->m[1][i+2]; */
+  /*   draw_line((int)x1, (int)y1, (int)x2, (int)y2, s, c); */
+  /*   x2 = polygons->m[0][i+3]; */
+  /*   y2 = polygons->m[1][i+3]; */
+  /*   x0 = polygons->m[0][i+0]; */
+  /*   y0 = polygons->m[1][i+0]; */
+  /*   draw_line((int)x2, (int)y2, (int)x0, (int)y0, s, c); */
+  /*   //} */
+
   int i;
-  double x0, y0, x1, y1, x2, y2; 
-  for (i=0;i<polygons->lastcol; i+=3){
-    x0 = polygons->m[0][i+0];
-    y0 = polygons->m[1][i+0];
-    x1 = polygons->m[0][i+1];
-    y1 = polygons->m[1][i+1];
-    draw_line((int)x0, (int)y0, (int)x1, (int)y1, s, c);
-    x1 = polygons->m[0][i+1];
-    y1 = polygons->m[1][i+1];
-    x2 = polygons->m[0][i+2];
-    y2 = polygons->m[1][i+2];
-    draw_line((int)x1, (int)y1, (int)x2, (int)y2, s, c);
-    x2 = polygons->m[0][i+3];
-    y2 = polygons->m[1][i+3];
-    x0 = polygons->m[0][i+0];
-    y0 = polygons->m[1][i+0];
-    draw_line((int)x2, (int)y2, (int)x0, (int)y0, s, c);
+  if ( polygons->lastcol < 3 ) {    
+    printf("Need at least 3 points to draw a triangle!\n");
+    return;
+  }
+  for ( i = 0; i < polygons->lastcol - 2; i+=3 ) {
+    draw_line( polygons->m[0][i], polygons->m[1][i], 
+	       polygons->m[0][i+1], polygons->m[1][i+1], s, c);
+    draw_line( polygons->m[0][i+1], polygons->m[1][i+1], 
+	       polygons->m[0][i+2], polygons->m[1][i+2], s, c);
+    draw_line( polygons->m[0][i+2], polygons->m[1][i+2], 
+	       polygons->m[0][i], polygons->m[1][i], s, c);
   }
 }
-
 
 /*======== void add_sphere() ==========
   Inputs:   struct matrix * points

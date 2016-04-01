@@ -109,6 +109,11 @@ void parse_file ( char * filename,
       add_edge(pm, x, y, z, x1, y1, z1);
       // printf( "%lf %lf %lf %lf %lf %lf\n", x, y, z, x1, y1, z1);
     }
+    else if ( strncmp(line, "polygon", strlen(line)) == 0 ) {
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf %lf %lf %lf %lf %lf %lf", &x, &y, &z, &x1, &y1, &z1, &x2, &y2, &z2);
+      add_polygon(pm, x, y, z, x1, y1, z1, x2, y2, z2);
+    }
     else if ( strncmp(line, "circle", strlen(line)) == 0 ) {
       //printf("CIRCLE\n");
       fgets(line, 255, f);
@@ -203,7 +208,7 @@ void parse_file ( char * filename,
     }
     else if ( strncmp(line, "display", strlen(line)) == 0 ) {
       clear_screen(s);
-      draw_lines(pm, s, g);
+      draw_polygons(pm, s, g);
       display(s);
     }
     else if ( strncmp(line, "save", strlen(line)) == 0 ) {
