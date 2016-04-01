@@ -1,11 +1,13 @@
 #test box mesh
-polygon
-0 0 0 100 0 0 0 100 0
+# polygon
+# 0 0 0 100 0 0 0 100 0
+box
+200 200 0 100 100 100
 ident
-# xrotate
-# 20
-# yrotate
-# 20
+xrotate
+20
+yrotate
+20
 # translate
 # 150 200 0
 apply

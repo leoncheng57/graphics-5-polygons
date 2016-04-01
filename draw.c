@@ -276,36 +276,40 @@ void generate_torus( struct matrix * points,
 void add_box( struct matrix * points,
 	      double x, double y, double z,
 	      double width, double height, double depth ) {
+  add_polygon( points, x, y, z, x, y-height, z,x+width, y-height, z );
+  add_polygon( points, x, y, z, x+width, y-height, z,x+width, y, z );
 
-  double x2, y2, z2;
-  x2 = x + width;
-  y2 = y - height;
-  z2 = z - depth;
+  add_polygon( points, x+width, y, z, x+width, y-height, z,x+width, y-height, z+depth );
 
-  add_edge( points, 
-	    x, y, z, 
-	    x, y, z );
-  add_edge( points, 
-	    x, y2, z, 
-	    x, y2, z );
-  add_edge( points, 
-	    x2, y, z, 
-	    x2, y, z );
-  add_edge( points, 
-	    x2, y2, z, 
-	    x2, y2, z );
-  add_edge( points, 
-	    x, y, z2, 
-	    x, y, z2 );
-  add_edge( points, 
-	    x, y2, z2, 
-	    x, y2, z2 );
-  add_edge( points, 
-	    x2, y, z2, 
-	    x2, y, z2 );
-  add_edge( points, 
-	    x2, y2, z2, 
-	    x2, y2, z2 );
+  /* double x2, y2, z2; */
+  /* x2 = x + width; */
+  /* y2 = y - height; */
+  /* z2 = z - depth; */
+
+  /* add_edge( points,  */
+  /* 	    x, y, z,  */
+  /* 	    x, y, z ); */
+  /* add_edge( points,  */
+  /* 	    x, y2, z,  */
+  /* 	    x, y2, z ); */
+  /* add_edge( points,  */
+  /* 	    x2, y, z,  */
+  /* 	    x2, y, z ); */
+  /* add_edge( points,  */
+  /* 	    x2, y2, z,  */
+  /* 	    x2, y2, z ); */
+  /* add_edge( points,  */
+  /* 	    x, y, z2,  */
+  /* 	    x, y, z2 ); */
+  /* add_edge( points,  */
+  /* 	    x, y2, z2,  */
+  /* 	    x, y2, z2 ); */
+  /* add_edge( points,  */
+  /* 	    x2, y, z2,  */
+  /* 	    x2, y, z2 ); */
+  /* add_edge( points,  */
+  /* 	    x2, y2, z2,  */
+  /* 	    x2, y2, z2 ); */
 }
   
 /*======== void add_circle() ==========
