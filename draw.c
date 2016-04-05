@@ -223,30 +223,54 @@ void add_torus( struct matrix * points,
       
       index = lat * num_steps + longt;
       
-      if (longt==num_steps-1){
-	add_polygon( points, 
+      if (lat == num_steps-1){
+	//TODO: UNFINISHED
+	/* add_polygon( points, */
+	/* 	     temp->m[0][index], */
+	/* 	     temp->m[1][index], */
+	/* 	     temp->m[2][index], */
+	/* 	     temp->m[0][index+num_steps+1-(num_steps*num_steps)], */
+	/* 	     temp->m[1][index+num_steps+1-(num_steps*num_steps)], */
+	/* 	     temp->m[2][index+num_steps+1-(num_steps*num_steps)], */
+	/* 	     temp->m[0][index+num_steps-(num_steps*num_steps)], */
+	/* 	     temp->m[1][index+num_steps-(num_steps*num_steps)], */
+	/* 	     temp->m[2][index+num_steps-(num_steps*num_steps)]); */
+	/* add_polygon( points, */
+	/* 	     temp->m[0][index], */
+	/* 	     temp->m[1][index], */
+	/* 	     temp->m[2][index], */
+	/* 	     temp->m[0][index], */
+	/* 	     temp->m[1][index], */
+	/* 	     temp->m[2][index], */
+	/* 	     temp->m[0][index+num_steps+1-(num_steps*num_steps)], */
+	/* 	     temp->m[1][index+num_steps+1-(num_steps*num_steps)], */
+	/* 	     temp->m[2][index+num_steps+1-(num_steps*num_steps)]);	 */
+      }
+      else if (longt==num_steps-1){
+	add_polygon( points,
 		     temp->m[0][index],
 		     temp->m[1][index],
 		     temp->m[2][index],
 		     temp->m[0][index+1],
 		     temp->m[1][index+1],
 		     temp->m[2][index+1],
-		     temp->m[0][index],
-		     temp->m[1][index],
-		     temp->m[2][index]);
+		     temp->m[0][index+num_steps],
+		     temp->m[1][index+num_steps],
+		     temp->m[2][index+num_steps]);
 	add_polygon( points, 
-		   temp->m[0][index],
-		     temp->m[1][index],
-		     temp->m[2][index],
-		     temp->m[0][index+1],
-		     temp->m[1][index+1],
-		     temp->m[2][index+1],
-		     temp->m[0][index+1],
-		     temp->m[1][index+1],
-		     temp->m[2][index+1]);      
+		     temp->m[0][index+num_steps-num_steps],
+		     temp->m[1][index+num_steps-num_steps],
+		     temp->m[2][index+num_steps-num_steps],
+		     temp->m[0][index+1-num_steps],
+		     temp->m[1][index+1-num_steps],
+		     temp->m[2][index+1-num_steps],
+		     temp->m[0][index+num_steps+1-num_steps],
+		     temp->m[1][index+num_steps+1-num_steps],
+		     temp->m[2][index+num_steps+1-num_steps]);  
+
       }
       else{
-	add_polygon( points, 
+	add_polygon( points,
 		     temp->m[0][index],
 		     temp->m[1][index],
 		     temp->m[2][index],
@@ -256,7 +280,7 @@ void add_torus( struct matrix * points,
 		     temp->m[0][index+num_steps],
 		     temp->m[1][index+num_steps],
 		     temp->m[2][index+num_steps]);
-	add_polygon( points, 
+	add_polygon( points,
 		   temp->m[0][index],
 		     temp->m[1][index],
 		     temp->m[2][index],
@@ -265,7 +289,7 @@ void add_torus( struct matrix * points,
 		     temp->m[2][index+1],
 		     temp->m[0][index+num_steps+1],
 		     temp->m[1][index+num_steps+1],
-		     temp->m[2][index+num_steps+1]);      
+		     temp->m[2][index+num_steps+1]);
       }
     }//end points only
 }
@@ -337,6 +361,7 @@ void add_box( struct matrix * points,
   add_polygon( points, x, y, z, x, y-height, z,x+width, y-height, z );
   add_polygon( points, x, y, z, x+width, y-height, z,x+width, y, z );
   add_polygon( points, x+width, y, z, x+width, y-height, z,x+width, y-height, z+depth );
+  //TODO: UNFINISHED
 
 
   /* double x2, y2, z2; */
