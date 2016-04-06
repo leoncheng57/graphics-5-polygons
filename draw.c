@@ -222,9 +222,7 @@ void add_torus( struct matrix * points,
     for ( longt = 0; longt < num_steps; longt++ ) {
       
       index = lat * num_steps + longt;
-      
       if (lat == num_steps-1){
-	//TODO: UNFINISHED
 	if (longt==num_steps-1){
 	  add_polygon( points,
 		       temp->m[0][index],
@@ -233,9 +231,6 @@ void add_torus( struct matrix * points,
 		       temp->m[0][0],
 		       temp->m[1][0],
 		       temp->m[2][0],
-		       /* temp->m[0][index+num_steps+1-(num_steps*num_steps)], */
-		       /* temp->m[1][index+num_steps+1-(num_steps*num_steps)], */
-		       /* temp->m[2][index+num_steps+1-(num_steps*num_steps)], */
 		       temp->m[0][index+num_steps-(num_steps*num_steps)],
 		       temp->m[1][index+num_steps-(num_steps*num_steps)],
 		       temp->m[2][index+num_steps-(num_steps*num_steps)]);
