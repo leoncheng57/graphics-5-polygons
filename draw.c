@@ -49,6 +49,8 @@ jdyrlandweaver
 ====================*/
 void draw_polygons( struct matrix *polygons, screen s, color c ) {
   int i;
+  //Find N
+  double A, B;
   if ( polygons->lastcol < 3 ) {    
     printf("Need at least 3 points to draw a triangle!\n");
     return;
