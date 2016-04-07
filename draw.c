@@ -379,10 +379,25 @@ void generate_torus( struct matrix * points,
 void add_box( struct matrix * points,
 	      double x, double y, double z,
 	      double width, double height, double depth ) {
+  //front
   add_polygon( points, x, y, z, x, y-height, z,x+width, y-height, z );
   add_polygon( points, x, y, z, x+width, y-height, z,x+width, y, z );
-  add_polygon( points, x+width, y, z, x+width, y-height, z,x+width, y-height, z+depth );
-  //TODO: UNFINISHED
+  //right side
+  add_polygon( points, x+width, y, z, x+width, y-height, z, x+width, y-height, z+depth );
+  add_polygon( points, x+width, y, z, x+width, y-height, z+depth, x+width, y, z+depth );
+  //back
+  add_polygon( points, x+width, y, z+depth, x+width, y-height, z+depth, x, y-height, z+depth );
+  add_polygon( points, x+width, y, z+depth, x, y-height, z+depth, x, y, z+depth );
+  //left side
+  add_polygon( points, x, y, z+depth, x, y-height, z+depth, x, y-height, z );
+  add_polygon( points, x, y, z+depth, x, y-height, z, x, y, z );
+  //top
+  add_polygon( points, x, y, z, x+width, y , z, x+width, y, z+depth );
+  add_polygon( points, x, y, z, x+width, y, z+depth, x, y, z+depth );
+  //bottom
+  add_polygon( points, x, y-height, z, x+width, y-height, z, x+width, y-height, z+depth );
+  add_polygon( points, x, y-height, z, x+width, y-height, z+depth, x, y-height, z+depth );
+  //TODO: RUN AND CHECK
 
 
   /* double x2, y2, z2; */
