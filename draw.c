@@ -50,6 +50,15 @@ jdyrlandweaver
 void draw_polygons( struct matrix *polygons, screen s, color c ) {
   int i;
   for ( i = 0; i < polygons->lastcol - 2; i+=3 ) {
+    /*
+    draw_line( polygons->m[0][i], polygons->m[1][i], 
+	       polygons->m[0][i+1], polygons->m[1][i+1], s, c);
+    draw_line( polygons->m[0][i+1], polygons->m[1][i+1],
+	       polygons->m[0][i+2], polygons->m[1][i+2], s, c);
+    draw_line( polygons->m[0][i+2], polygons->m[1][i+2], 
+	       polygons->m[0][i], polygons->m[1][i], s, c);
+    */
+    
     double Ax, Ay, Az, Bx, By, Bz, Nx, Ny, Nz, Vx, Vy, Vz, sign;
     //Set vV
     Vx = 0;
@@ -75,6 +84,7 @@ void draw_polygons( struct matrix *polygons, screen s, color c ) {
       draw_line( polygons->m[0][i+2], polygons->m[1][i+2], 
 		 polygons->m[0][i], polygons->m[1][i], s, c);
     }
+    
   }
 }
 
