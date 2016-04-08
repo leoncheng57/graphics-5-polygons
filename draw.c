@@ -49,19 +49,32 @@ jdyrlandweaver
 ====================*/
 void draw_polygons( struct matrix *polygons, screen s, color c ) {
   int i;
-  //Find N
-  double A, B;
-  if ( polygons->lastcol < 3 ) {    
-    printf("Need at least 3 points to draw a triangle!\n");
-    return;
-  }
   for ( i = 0; i < polygons->lastcol - 2; i+=3 ) {
-    draw_line( polygons->m[0][i], polygons->m[1][i], 
-	       polygons->m[0][i+1], polygons->m[1][i+1], s, c);
-    draw_line( polygons->m[0][i+1], polygons->m[1][i+1], 
-	       polygons->m[0][i+2], polygons->m[1][i+2], s, c);
-    draw_line( polygons->m[0][i+2], polygons->m[1][i+2], 
-	       polygons->m[0][i], polygons->m[1][i], s, c);
+    double Ax, Ay, Az, Bx, By, Bz, Nx, Ny, Nz, Vx, Vy, Vz, sign;
+    //Set vV
+    Vx = 0;
+    Vy = 0;
+    Vz = -1.0;
+    //Find vN = vA x vB
+    Ax = polygons->m[0][i+1] - polygons->m[0][i];
+    Ay = polygons->m[1][i+1] - polygons->m[1][i];
+    Az = polygons->m[2][i+1] - polygons->m[2][i];
+    Bx = polygons->m[0][i+2] - polygons->m[0][i+1];
+    By = polygons->m[1][i+2] - polygons->m[1][i+1];
+    Bz = polygons->m[2][i+2] - polygons->m[2][i+1];
+    Nx = Ay*Bz - Az*By;
+    Ny = Az*Bx - Ax*Bz;
+    Nz = Ax*By - Ay*Bx;
+    //Dot product vN x vV
+    sign = Nx*Vx + Ny*Vy + Nz*Vz;
+    if ( sign < 0 ) {
+      draw_line( polygons->m[0][i], polygons->m[1][i], 
+		 polygons->m[0][i+1], polygons->m[1][i+1], s, c);
+      draw_line( polygons->m[0][i+1], polygons->m[1][i+1], 
+		 polygons->m[0][i+2], polygons->m[1][i+2], s, c);
+      draw_line( polygons->m[0][i+2], polygons->m[1][i+2], 
+		 polygons->m[0][i], polygons->m[1][i], s, c);
+    }
   }
 }
 
