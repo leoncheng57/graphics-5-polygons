@@ -83,6 +83,7 @@ void draw_polygons( struct matrix *polygons, screen s, color c ) {
 		 polygons->m[0][i+2], polygons->m[1][i+2], s, c);
       draw_line( polygons->m[0][i+2], polygons->m[1][i+2], 
 		 polygons->m[0][i], polygons->m[1][i], s, c);
+		 
     }
     
   }

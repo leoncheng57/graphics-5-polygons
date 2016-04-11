@@ -21,6 +21,10 @@ int main( int argc, char** argv ) {
   /*
   add_box( edges, 50.0, 50.0, 50.0, 10.0, 10.0, 10.0 ); 
   display( s );
+  
+  add_polygon( edges, 0, 0, 0, 100, 0, 0, 0, 100, 0 );
+  add_torus( edges, 250, 250, 50, 200, 10 );
+  save_extension( s, "lines.png" );
   */
   if ( argc == 2 )
     parse_file( argv[1], transform, edges, s );
