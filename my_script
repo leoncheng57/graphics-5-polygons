@@ -16,16 +16,20 @@ torus
 ident
 xrotate
 90
-# box
-# 200 200 0 100 100 100
+box
+200 200 0 100 100 100
 # yrotate
 # 20
-translate
-0 250 0
+# translate
+# 0 250 0
 line
 200 250 0 25 0 0
+zrotate
+20
+translate
+10 170 0
 apply
 display
-save
-lines.png
+# save
+# lines.png
 quit
